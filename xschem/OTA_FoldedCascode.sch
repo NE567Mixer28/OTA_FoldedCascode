@@ -48,9 +48,9 @@ lab=OUT}
 N 540 -440 680 -440 {
 lab=Vc3}
 N 500 -560 500 -470 {
-lab=#net1}
+lab=D9}
 N 720 -560 720 -470 {
-lab=#net2}
+lab=D10}
 N 500 -650 500 -620 {
 lab=VDD}
 N 500 -650 720 -650 {
@@ -78,13 +78,13 @@ lab=IN+}
 N 720 -350 820 -350 {
 lab=OUT}
 N 90 -390 90 -320 {
-lab=#net3}
+lab=#net1}
 N 310 -390 310 -320 {
-lab=#net3}
+lab=#net1}
 N 90 -390 310 -390 {
-lab=#net3}
+lab=#net1}
 N 200 -440 200 -390 {
-lab=#net3}
+lab=#net1}
 N 200 -640 200 -500 {
 lab=VDD}
 N 200 -650 480 -650 {
@@ -98,13 +98,13 @@ lab=G}
 N 610 -590 610 -360 {
 lab=G}
 N 230 -290 310 -290 {
-lab=#net3}
+lab=#net1}
 N 230 -390 230 -290 {
-lab=#net3}
+lab=#net1}
 N 90 -290 170 -290 {
-lab=#net3}
+lab=#net1}
 N 170 -390 170 -290 {
-lab=#net3}
+lab=#net1}
 N 420 -130 500 -130 {
 lab=GND}
 N 420 -130 420 -70 {
@@ -130,19 +130,19 @@ lab=D1}
 N 420 -220 500 -220 {
 lab=D1}
 N 720 -440 790 -440 {
-lab=#net2}
+lab=D10}
 N 790 -440 800 -440 {
-lab=#net2}
+lab=D10}
 N 800 -490 800 -440 {
-lab=#net2}
+lab=D10}
 N 720 -490 800 -490 {
-lab=#net2}
+lab=D10}
 N 420 -440 500 -440 {
-lab=#net1}
+lab=D9}
 N 420 -490 420 -440 {
-lab=#net1}
+lab=D9}
 N 420 -490 500 -490 {
-lab=#net1}
+lab=D9}
 N 420 -590 500 -590 {
 lab=VDD}
 N 420 -650 420 -590 {
@@ -179,6 +179,10 @@ N 290 -230 310 -230 {
 lab=D2}
 N 610 -610 610 -590 {
 lab=G}
+N 670 -530 720 -530 {
+lab=D10}
+N 450 -530 500 -530 {
+lab=D9}
 C {devices/iopin.sym} -180 -500 0 0 {name=p1 lab=VDD}
 C {devices/iopin.sym} -180 -470 0 0 {name=p2 lab=GND}
 C {devices/ipin.sym} 0 -290 0 0 {name=p3 lab=IN+}
@@ -205,12 +209,12 @@ save @m.xm8.msky130_fd_pr__pfet_01v8[gm]
 save @m.xm9.msky130_fd_pr__pfet_01v8[gm]
 save @m.xm10.msky130_fd_pr__pfet_01v8[gm]
 
-   *op
-   *remzerovec 
+   op
+   remzerovec 
    
-   dc Vbias 0.8 1 0.001 
-   plot v(out),v(in+)
-   plot deriv(v(out))
+   *dc Vbias 0.8 1 0.001 
+   *plot v(out),v(in+)
+   *plot deriv(v(out))
    
    write OTA_FoldedCascode.raw
 .measure gain max(deriv(v(out)))
@@ -229,13 +233,14 @@ C {devices/lab_pin.sym} -270 -300 0 0 {name=p13 sig_type=std_logic lab=IN-}
 C {devices/lab_pin.sym} -370 -300 0 0 {name=p14 sig_type=std_logic lab=IN+}
 C {devices/lab_wire.sym} 480 -710 0 0 {name=p6 sig_type=std_logic lab=VDD}
 C {devices/lab_wire.sym} 590 0 0 0 {name=p7 sig_type=std_logic lab=GND}
-C {devices/launcher.sym} -350 -130 0 0 {name=h1
+C {devices/launcher.sym} -340 -130 0 0 {name=h1
 descr="Annotate OP" 
 tclcommand="set show_hidden_texts 1; xschem annotate_op"
 }
 C {devices/lab_pin.sym} -370 -200 0 1 {name=p11 sig_type=std_logic lab=GND}
 C {devices/lab_pin.sym} -270 -200 0 1 {name=p12 sig_type=std_logic lab=GND}
-C {devices/isource.sym} 200 -470 0 0 {name=I0 value=2u}
+C {devices/isource.sym} 200 -470 0 0 {name=I0 value=2u
+}
 C {sky130_fd_pr/pfet_01v8.sym} 70 -290 0 0 {name=M1
 L=2
 W=50
@@ -395,5 +400,11 @@ C {devices/lab_pin.sym} 290 -210 0 0 {name=p25 sig_type=std_logic lab=D2
 
 }
 C {devices/lab_pin.sym} 610 -610 0 0 {name=p26 sig_type=std_logic lab=G
+
+}
+C {devices/lab_pin.sym} 670 -530 0 0 {name=p27 sig_type=std_logic lab=D10
+
+}
+C {devices/lab_pin.sym} 450 -530 0 0 {name=p28 sig_type=std_logic lab=D9
 
 }

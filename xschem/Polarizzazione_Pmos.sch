@@ -80,9 +80,9 @@ descr="W="}
 C {devices/ngspice_get_value.sym} 770 -300 0 1 {name=r1 node=@m.xm1.msky130_fd_pr__nfet_01v8[gm]
 descr="gm="}
 C {sky130_fd_pr/pfet_01v8.sym} 790 -220 0 0 {name=M1
-L=2
-W=50
-nf=1
+L=1
+W=60
+nf=10
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"

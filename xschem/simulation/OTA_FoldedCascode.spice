@@ -8,10 +8,10 @@
 V1 VDD GND 1.8
 Vbias IN+ GND 0.9
 VbiasR IN- GND 0.9
-I0 VDD net3 2u
-XM1 D1 IN+ net3 net3 sky130_fd_pr__pfet_01v8 L=2 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+I0 VDD net1 2u
+XM1 D1 IN+ net1 net1 sky130_fd_pr__pfet_01v8 L=2 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM2 D2 IN- net3 net3 sky130_fd_pr__pfet_01v8 L=2 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM2 D2 IN- net1 net1 sky130_fd_pr__pfet_01v8 L=2 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 XM3 D1 Vc2 GND GND sky130_fd_pr__nfet_01v8 L=2 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
@@ -21,13 +21,13 @@ XM5 G Vc1 D1 D1 sky130_fd_pr__nfet_01v8 L=2 W=50 nf=1 ad='int((nf+1)/2) * W/nf *
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 XM6 OUT Vc1 D2 D2 sky130_fd_pr__nfet_01v8 L=2 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM7 G Vc3 net1 net1 sky130_fd_pr__pfet_01v8 L=2 W=80 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM7 G Vc3 D9 D9 sky130_fd_pr__pfet_01v8 L=2 W=80 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM8 OUT Vc3 net2 net2 sky130_fd_pr__pfet_01v8 L=2 W=80 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM8 OUT Vc3 D10 D10 sky130_fd_pr__pfet_01v8 L=2 W=80 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM9 net1 G VDD VDD sky130_fd_pr__pfet_01v8 L=2 W=15 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM9 D9 G VDD VDD sky130_fd_pr__pfet_01v8 L=2 W=15 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM10 net2 G VDD VDD sky130_fd_pr__pfet_01v8 L=2 W=15 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM10 D10 G VDD VDD sky130_fd_pr__pfet_01v8 L=2 W=15 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 Vc1 Vc1 GND 0.7
 Vc2 Vc2 GND 0.7
@@ -53,12 +53,12 @@ save @m.xm8.msky130_fd_pr__pfet_01v8[gm]
 save @m.xm9.msky130_fd_pr__pfet_01v8[gm]
 save @m.xm10.msky130_fd_pr__pfet_01v8[gm]
 
-   *op
-   *remzerovec
+   op
+   remzerovec
 
-   dc Vbias 0.8 1 0.001
-   plot v(out),v(in+)
-   plot deriv(v(out))
+   *dc Vbias 0.8 1 0.001
+   *plot v(out),v(in+)
+   *plot deriv(v(out))
 
    write OTA_FoldedCascode.raw
 .measure gain max(deriv(v(out)))
