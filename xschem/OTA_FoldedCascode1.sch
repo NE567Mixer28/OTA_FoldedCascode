@@ -28,7 +28,7 @@ lab=IN+}
 N -660 -230 -660 -210 {
 lab=IN-}
 N 150 -60 290 -60 {
-lab=Vc2}
+lab=Vc1}
 N 110 -30 110 0 {
 lab=GND}
 N 110 0 330 0 {
@@ -40,7 +40,7 @@ lab=D1}
 N 330 -160 330 -90 {
 lab=D2}
 N 150 -190 290 -190 {
-lab=Vc1}
+lab=Vc2}
 N 110 -340 110 -220 {
 lab=G}
 N 330 -340 330 -220 {
@@ -162,9 +162,9 @@ lab=GND}
 N -1000 -230 -1000 -210 {
 lab=Vc2}
 N 230 -210 230 -190 {
-lab=Vc1}
-N 220 -90 220 -60 {
 lab=Vc2}
+N 220 -90 220 -60 {
+lab=Vc1}
 N -930 -150 -930 -130 {
 lab=GND}
 N -930 -230 -930 -210 {
@@ -209,12 +209,12 @@ save @m.xm8.msky130_fd_pr__pfet_01v8[gm]
 save @m.xm9.msky130_fd_pr__pfet_01v8[gm]
 save @m.xm10.msky130_fd_pr__pfet_01v8[gm]
 
-   *op
-   *remzerovec 
+   op
+   remzerovec 
    
-   dc Vbias 0 3.3 0.001 
-   plot v(out),v(in+)
-   plot deriv(v(out))
+   *dc Vbias 0 3.3 0.001 
+   *plot v(out),v(in+)
+   *plot deriv(v(out))
    
    write OTA_FoldedCascode1.raw
 .measure gain max(deriv(v(out)))
@@ -222,13 +222,13 @@ save @m.xm10.msky130_fd_pr__pfet_01v8[gm]
 .end
 "}
 C {sky130_fd_pr/corner.sym} -1580 -480 0 0 {name=CORNER only_toplevel=false corner=tt}
-C {devices/vsource.sym} -760 -350 0 0 {name=V1 value=3.3 savecurrent=false}
+C {devices/vsource.sym} -760 -350 0 0 {name=V1 value=1.8 savecurrent=false}
 C {devices/gnd.sym} -660 -300 0 0 {name=l1 lab=GND}
 C {devices/lab_pin.sym} -660 -340 0 1 {name=p8 sig_type=std_logic lab=GND}
 C {devices/lab_pin.sym} -760 -290 0 1 {name=p9 sig_type=std_logic lab=GND}
 C {devices/lab_pin.sym} -760 -410 0 0 {name=p10 sig_type=std_logic lab=VDD}
 C {devices/vsource.sym} -760 -180 0 0 {name=Vbias value=0.9 savecurrent=false}
-C {devices/vsource.sym} -660 -180 0 0 {name=VbiasR value=1.5 savecurrent=false}
+C {devices/vsource.sym} -660 -180 0 0 {name=VbiasR value=0.9 savecurrent=false}
 C {devices/lab_pin.sym} -660 -230 0 0 {name=p13 sig_type=std_logic lab=IN-}
 C {devices/lab_pin.sym} -760 -230 0 0 {name=p14 sig_type=std_logic lab=IN+}
 C {devices/lab_wire.sym} 90 -640 0 0 {name=p6 sig_type=std_logic lab=VDD}
@@ -242,9 +242,9 @@ C {devices/lab_pin.sym} -660 -130 0 1 {name=p12 sig_type=std_logic lab=GND}
 C {devices/isource.sym} -190 -400 0 0 {name=I0 value=20u
 }
 C {sky130_fd_pr/pfet_01v8.sym} -320 -220 0 0 {name=M1
-L=2
-W=20
-nf=1
+L=1
+W=60
+nf=10
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
@@ -256,9 +256,9 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} -60 -220 0 1 {name=M2
-L=2
-W=20
-nf=1
+L=1
+W=60
+nf=10
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
 pd="'2*int((nf+1)/2) * (W/nf + 0.29)'"
@@ -388,10 +388,10 @@ C {devices/vsource.sym} -1000 -180 0 0 {name=Vc2 value=0.7 savecurrent=false}
 C {devices/lab_pin.sym} -1000 -230 0 0 {name=p17 sig_type=std_logic lab=Vc2
 }
 C {devices/lab_pin.sym} -1000 -130 0 1 {name=p18 sig_type=std_logic lab=GND}
-C {devices/lab_pin.sym} 230 -210 0 0 {name=p19 sig_type=std_logic lab=Vc1}
-C {devices/lab_pin.sym} 220 -90 0 0 {name=p20 sig_type=std_logic lab=Vc2
+C {devices/lab_pin.sym} 220 -90 0 0 {name=p19 sig_type=std_logic lab=Vc1}
+C {devices/lab_pin.sym} 230 -210 0 0 {name=p20 sig_type=std_logic lab=Vc2
 }
-C {devices/vsource.sym} -930 -180 0 0 {name=Vc3 value=0.7 savecurrent=false}
+C {devices/vsource.sym} -930 -180 0 0 {name=Vc3 value=0.2 savecurrent=false}
 C {devices/lab_pin.sym} -930 -230 0 0 {name=p21 sig_type=std_logic lab=Vc3}
 C {devices/lab_pin.sym} -930 -130 0 1 {name=p22 sig_type=std_logic lab=GND}
 C {devices/lab_pin.sym} 210 -350 0 0 {name=p23 sig_type=std_logic lab=Vc3}
