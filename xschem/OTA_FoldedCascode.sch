@@ -209,12 +209,12 @@ save @m.xm8.msky130_fd_pr__pfet_01v8[gm]
 save @m.xm9.msky130_fd_pr__pfet_01v8[gm]
 save @m.xm10.msky130_fd_pr__pfet_01v8[gm]
 
-   op
-   remzerovec 
+   *op
+   *remzerovec 
    
-   *dc Vbias 0.8 1 0.001 
-   *plot v(out),v(in+)
-   *plot deriv(v(out))
+   dc Vbias 0.899 0.901 0.000001 
+   plot v(out),v(in+)
+   plot deriv(v(out))
    
    write OTA_FoldedCascode.raw
 .measure gain max(deriv(v(out)))
@@ -270,7 +270,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 520 -130 0 1 {name=M3
-L=2
+L=3
 W=2
 nf=1 
 mult=1
@@ -284,7 +284,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 700 -130 0 0 {name=M4
-L=2
+L=3
 W=2
 nf=1 
 mult=1
@@ -298,7 +298,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 520 -260 0 1 {name=M5
-L=2
+L=3
 W=50
 nf=1 
 mult=1
@@ -312,7 +312,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 700 -260 0 0 {name=M6
-L=2
+L=3
 W=50
 nf=1 
 mult=1
@@ -326,8 +326,8 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 520 -440 0 1 {name=M7
-L=2
-W=80
+L=3
+W=50
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -340,8 +340,8 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 700 -440 0 0 {name=M8
-L=2
-W=80
+L=3
+W=50
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -354,7 +354,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 520 -590 0 1 {name=M9
-L=2
+L=3
 W=15
 nf=1
 mult=1
@@ -368,7 +368,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 700 -590 0 0 {name=M10
-L=2
+L=3
 W=15
 nf=1
 mult=1
