@@ -78,13 +78,13 @@ lab=IN+}
 N 720 -350 820 -350 {
 lab=OUT}
 N 90 -390 90 -320 {
-lab=#net1}
+lab=S}
 N 310 -390 310 -320 {
-lab=#net1}
+lab=S}
 N 90 -390 310 -390 {
-lab=#net1}
+lab=S}
 N 200 -440 200 -390 {
-lab=#net1}
+lab=S}
 N 200 -640 200 -500 {
 lab=VDD}
 N 200 -650 480 -650 {
@@ -98,13 +98,13 @@ lab=G}
 N 610 -590 610 -360 {
 lab=G}
 N 230 -290 310 -290 {
-lab=#net1}
+lab=S}
 N 230 -390 230 -290 {
-lab=#net1}
+lab=S}
 N 90 -290 170 -290 {
-lab=#net1}
+lab=S}
 N 170 -390 170 -290 {
-lab=#net1}
+lab=S}
 N 420 -130 500 -130 {
 lab=GND}
 N 420 -130 420 -70 {
@@ -183,6 +183,8 @@ N 670 -530 720 -530 {
 lab=D10}
 N 450 -530 500 -530 {
 lab=D9}
+N 200 -390 200 -370 {
+lab=S}
 C {devices/iopin.sym} -180 -500 0 0 {name=p1 lab=VDD}
 C {devices/iopin.sym} -180 -470 0 0 {name=p2 lab=GND}
 C {devices/ipin.sym} 0 -290 0 0 {name=p3 lab=IN+}
@@ -209,12 +211,13 @@ save @m.xm8.msky130_fd_pr__pfet_01v8[gm]
 save @m.xm9.msky130_fd_pr__pfet_01v8[gm]
 save @m.xm10.msky130_fd_pr__pfet_01v8[gm]
 
-   *op
-   *remzerovec 
-   
-   dc Vbias 0.899 0.901 0.000001 
-   plot v(out),v(in+)
-   plot deriv(v(out))
+   op
+   remzerovec 
+    
+   *dc Vbias 0.899 0.901 0.000001 
+   *dc Vbias 0 1.8 0.01 
+   *plot v(out),v(in+)
+   *plot deriv(v(out))
    
    write OTA_FoldedCascode.raw
 .measure gain max(deriv(v(out)))
@@ -270,7 +273,7 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 520 -130 0 1 {name=M3
-L=3
+L=4
 W=2
 nf=1 
 mult=1
@@ -284,7 +287,7 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 700 -130 0 0 {name=M4
-L=3
+L=4
 W=2
 nf=1 
 mult=1
@@ -298,8 +301,8 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 520 -260 0 1 {name=M5
-L=3
-W=50
+L=2
+W=80
 nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -312,8 +315,8 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/nfet_01v8.sym} 700 -260 0 0 {name=M6
-L=3
-W=50
+L=2
+W=80
 nf=1 
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -326,8 +329,8 @@ model=nfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 520 -440 0 1 {name=M7
-L=3
-W=50
+L=5
+W=40
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -340,8 +343,8 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 700 -440 0 0 {name=M8
-L=3
-W=50
+L=5
+W=40
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -354,8 +357,8 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 520 -590 0 1 {name=M9
-L=3
-W=15
+L=1
+W=30
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -368,8 +371,8 @@ model=pfet_01v8
 spiceprefix=X
 }
 C {sky130_fd_pr/pfet_01v8.sym} 700 -590 0 0 {name=M10
-L=3
-W=15
+L=1
+W=30
 nf=1
 mult=1
 ad="'int((nf+1)/2) * W/nf * 0.29'" 
@@ -406,5 +409,8 @@ C {devices/lab_pin.sym} 670 -530 0 0 {name=p27 sig_type=std_logic lab=D10
 
 }
 C {devices/lab_pin.sym} 450 -530 0 0 {name=p28 sig_type=std_logic lab=D9
+
+}
+C {devices/lab_pin.sym} 200 -370 0 0 {name=p29 sig_type=std_logic lab=S
 
 }
