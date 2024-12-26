@@ -211,13 +211,13 @@ save @m.xm8.msky130_fd_pr__pfet_01v8[gm]
 save @m.xm9.msky130_fd_pr__pfet_01v8[gm]
 save @m.xm10.msky130_fd_pr__pfet_01v8[gm]
 
-   op
-   remzerovec 
+   *op
+   *remzerovec 
     
-   *dc Vbias 0.899 0.901 0.000001 
+   dc Vbias 0.899 0.901 0.000001 
    *dc Vbias 0 1.8 0.01 
-   *plot v(out),v(in+)
-   *plot deriv(v(out))
+   plot v(out),v(in+)
+   plot deriv(v(out))
    
    write OTA_FoldedCascode.raw
 .measure gain max(deriv(v(out)))

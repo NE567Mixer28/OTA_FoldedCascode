@@ -1,5 +1,5 @@
-** sch_path: /home/ttuser/OTA_FoldedCascode/xschem/OTA_FoldedCascode.sch
-**.subckt OTA_FoldedCascode VDD GND IN+ IN- OUT
+** sch_path: /home/ttuser/OTA_FoldedCascode/xschem/OTA_FoldedCascode_AC.sch
+**.subckt OTA_FoldedCascode_AC VDD GND IN+ IN- OUT
 *.iopin VDD
 *.iopin GND
 *.ipin IN+
@@ -7,11 +7,11 @@
 *.opin OUT
 V1 VDD GND 1.8
 Vbias IN+ GND 0.9
-VbiasR IN- GND 0.9
+VbiasR IN- GND 0 ac 1 0 sin(0 1m 1T 0 0 0)
 I0 VDD S 2u
 XM1 D1 IN+ S S sky130_fd_pr__pfet_01v8 L=2 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
-XM2 D2 IN- S S sky130_fd_pr__pfet_01v8 L=2 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
+XM2 D2 MINUS S S sky130_fd_pr__pfet_01v8 L=2 W=50 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
 XM3 D1 Vc2 GND GND sky130_fd_pr__nfet_01v8 L=4 W=2 nf=1 ad='int((nf+1)/2) * W/nf * 0.29' as='int((nf+2)/2) * W/nf * 0.29' pd='2*int((nf+1)/2) * (W/nf + 0.29)'
 + ps='2*int((nf+2)/2) * (W/nf + 0.29)' nrd='0.29 / W' nrs='0.29 / W' sa=0 sb=0 sd=0 mult=1 m=1
@@ -32,39 +32,27 @@ XM10 D10 G VDD VDD sky130_fd_pr__pfet_01v8 L=1 W=30 nf=1 ad='int((nf+1)/2) * W/n
 Vc1 Vc1 GND 0.7
 Vc2 Vc2 GND 0.7
 Vc3 Vc3 GND 0.7
+C2 MINUS IN- 1T m=1
+L2 OUT MINUS 1T m=1
+C1 OUT GND 1p m=1
 **** begin user architecture code
 
 
 
-* ngspice commands
-
-.options savecurrents
-
+.option reltol=1e-5
++  abstol=1e-14 savecurrents
 .control
-save all
-save @m.xm1.msky130_fd_pr__pfet_01v8[gm]
-save @m.xm2.msky130_fd_pr__pfet_01v8[gm]
-save @m.xm3.msky130_fd_pr__nfet_01v8[gm]
-save @m.xm4.msky130_fd_pr__nfet_01v8[gm]
-save @m.xm5.msky130_fd_pr__nfet_01v8[gm]
-save @m.xm6.msky130_fd_pr__nfet_01v8[gm]
-save @m.xm7.msky130_fd_pr__pfet_01v8[gm]
-save @m.xm8.msky130_fd_pr__pfet_01v8[gm]
-save @m.xm9.msky130_fd_pr__pfet_01v8[gm]
-save @m.xm10.msky130_fd_pr__pfet_01v8[gm]
-
-   *op
-   *remzerovec
-
-   dc Vbias 0.899 0.901 0.000001
-   *dc Vbias 0 1.8 0.01
-   plot v(out),v(in+)
-   plot deriv(v(out))
-
-   write OTA_FoldedCascode.raw
-.measure gain max(deriv(v(out)))
+  save all
+  op
+  remzerovec
+  write OTA_FoldedCascode_AC.raw
+  set appendwrite
+  ac dec 10 1 1e12
+  remzerovec
+  write OTA_FoldedCascode_AC.raw
+  tran 1e-15 6e-12
+  write OTA_FoldedCascode_AC.raw
 .endc
-.end
 
 
 
